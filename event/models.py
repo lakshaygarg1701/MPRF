@@ -42,3 +42,13 @@ class Event(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse("Data:body", kwargs={'pk': self.pk})
+
+# class Subscribe(models.Model):
+#     id1=models.ForeignKey('id1', on_delete=models.CASCADE)
+#     email=models.CharField(max_length=100)
+
+#     def __str__(request):
+#         p1=request.GET['id1']
+#         p2=request.GET['email']
+#         publisher=Subscribe(id1=p1,email=p2)
+#         publisher.save()

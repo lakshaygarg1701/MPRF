@@ -9,6 +9,7 @@ class SignUpForm(UserCreationForm):
     roll_no=forms.CharField(max_length=11)
     mobile= forms.CharField(max_length=10)
     course=forms.CharField(max_length=10)
+    
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'roll_no', 'course', 'email', 'mobile', 'password1', 'password2')

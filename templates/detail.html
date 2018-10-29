@@ -4,5 +4,7 @@
 <p>{{object.body}}</p>
 <p>{{object.date}}</p>
 <p>{{object.venue}}</p>
-<a href="{{object.link}}"><h4>Click to register</h6></a>
+<a href="{{object.link}}"><h4>Click to register</h4></a>
+{% csrf_token %}
+<form><input type="text" placeholder="Enter your Email"/><button type="submit">Subscribe</button></form>
 {% endblock content %}

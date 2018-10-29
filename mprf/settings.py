@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'content',
+    'event',
     'accounts',
 ]
 
@@ -121,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/content'
-LOGOUT_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/accounts/login'
