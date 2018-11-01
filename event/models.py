@@ -8,6 +8,18 @@ Event_Date=(
     ("Upcoming",date.today()),
     ("Past Events",date.today())
 )
+Category=(
+    ('E-Sports', "E-Sports"),
+    ('Sports', "Sports"),
+    ('Dance', "Dance"),
+    ('Music', "Music"),
+)
+
+Dept=(
+    ('CS','CS'),
+    ('BBA','BBA'),
+    ('B.Com.','B.Com.'),
+)
 
 class Post(models.Model):
     dept = models.ForeignKey('auth.User', on_delete=models.CASCADE)
@@ -35,6 +47,8 @@ class Event(models.Model):
     venue = models.TextField()
     link = models.BinaryField()
     contact = models.TextField()
+    category=models.CharField(max_length=25,choices=Category)
+    dept=models.CharField(max_length=20,choices=Dept)
 
     class Meta:
         managed = False
@@ -43,12 +57,16 @@ class Event(models.Model):
     # def get_absolute_url(self):
     #     return reverse("Data:body", kwargs={'pk': self.pk})
 
-# class Subscribe(models.Model):
-#     id1=models.ForeignKey('id1', on_delete=models.CASCADE)
-#     email=models.CharField(max_length=100)
+class EventDetail(models.Model):
+    id1 = models.IntegerField()
+    emailid = models.EmailField('email address')
 
-#     def __str__(request):
-#         p1=request.GET['id1']
-#         p2=request.GET['email']
-#         publisher=Subscribe(id1=p1,email=p2)
-#         publisher.save()
+    class Meta:
+        managed = False
+        db_table = 'event_detail'
+
+    def save(request):
+        p1=request.GET['id1']
+        p2=request.GET['email']
+        publisher=Subscribe.get_or_create(id1=p1,email=p2)
+        publisher.save()

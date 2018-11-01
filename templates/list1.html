@@ -1,8 +1,24 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %} -->
 {%block content%}
-<table border=5 cellpadding=7 id="list1"><tr><th>ID</th><th>Event Name</th><th>Date</th><th>Venue</th><th>Registration link</th></tr>
+<form method="GET">
+	<select name="category">
+		<option disable selected value>Category</option>
+		<option value='E-Sports'>E-Sports</option>
+		<option value='Sports'>Sports</option>
+		<option value='Dance'>Dance</option>
+		<option value='Music'>Music</option>
+	</select>
+	<select name="department">
+		<option disable selected value>Department</option>
+		<option value='CS'>Dept. of Computer Science</option>
+		<option value='BBA'>Dept. of Business Administration</option>
+		<option value='B.Com.'>Dept. of Commerce</option>
+	</select>
+	<button type="submit">Filter</button>
+</form><br/>
+<table id="list1"><tr><th>ID</th><th>Event Name</th><th>Date</th><th>Venue</th><th>Department</th><th>Registration link</th></tr>
 {%for x in object_list%}
-<tr><td>{{x.id1}}</td><td><a href="/content/{{x.id1}}">{{x.name}}</a></td><td>{{x.date}}</td><td>{{x.venue}}</td><td><a href="{{x.link}}" target="_blank">Click</a></td></tr>
+<tr><td>{{x.id1}}</td><td><a href="/content/{{x.id1}}">{{x.name}}</a></td><td>{{x.date}}</td><td>{{x.venue}}</td><td>{{x.dept}}</td><td><a href="{{x.link}}" target="_blank">Click</a></td></tr>
 {%endfor%}
 </table>
 {%endblock content%}

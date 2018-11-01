@@ -1,0 +1,8 @@
+{% block content %}
+  <h2>Newsletter</h2>
+  <form method="POST" style="padding-left: 5px">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}
