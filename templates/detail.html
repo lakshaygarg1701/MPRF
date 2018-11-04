@@ -1,15 +1,9 @@
 <!-- {% extends "base.html" %} -->
 {% block content %}
-<h1>{{object.name}}</h1>
+<h1>{{object.name}}</h1><br>
 <p>{{object.body}}</p>
 <p>{{object.date}}</p>
 <p>{{object.venue}}</p>
 <a href="{{object.link}}"><h4>Click to register</h4></a>
-<form method="GET">
-	{% csrf_token %}
-	{{form.as_table}}
-	<button type=submit value='login'>
-		<h4>Click here to receive newsletter</h4>
-	</button>
-</form>
+<a href="{% url 'post_new' %}"><h4>Click here to receive notification</h4></a>
 {% endblock content %}

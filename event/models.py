@@ -54,19 +54,16 @@ class Event(models.Model):
         managed = False
         db_table = 'event'
 
-    # def get_absolute_url(self):
-    #     return reverse("Data:body", kwargs={'pk': self.pk})
-
 class EventDetail(models.Model):
     id1 = models.IntegerField()
-    emailid = models.EmailField('email address')
+    email = models.EmailField()
 
     class Meta:
         managed = False
         db_table = 'event_detail'
 
-    def save(request):
-        p1=request.GET['id1']
-        p2=request.GET['email']
-        publisher=Subscribe.get_or_create(id1=p1,email=p2)
-        publisher.save()
+    # # def save(request):
+    # #     p1=request.GET['id1']
+    # #     p2=request.GET['email']
+    # #     publisher=Subscribe.get_or_create(id1=p1,email=p2)
+    # #     publisher.save()
