@@ -58,12 +58,12 @@ class EventDetail(models.Model):
     id1 = models.IntegerField()
     email = models.EmailField()
 
+    def publish(self):
+        self.save()
+
     class Meta:
-        managed = False
         db_table = 'event_detail'
 
-    # # def save(request):
-    # #     p1=request.GET['id1']
-    # #     p2=request.GET['email']
-    # #     publisher=Subscribe.get_or_create(id1=p1,email=p2)
-    # #     publisher.save()
+    # def save(request):
+    #     publisher.save()
+

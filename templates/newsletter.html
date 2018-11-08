@@ -1,13 +1,9 @@
 {% extends "base.html"%}
 {% block content %}
   <h2>Newsletter</h2>
-  <form method="POST" style="padding-left: 5px" class="post-form">
+  <form method="POST" style="padding-left: 5px">
     {% csrf_token %}
-    {{ form.as_table }}
-    <script>
-    	document.getElementById('id_id1').setAttribute('value','20')
-    	document.getElementById('id_email').setAttribute('value','lakshay@gmail.com')
-    </script>
+    {{ form }}
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}
