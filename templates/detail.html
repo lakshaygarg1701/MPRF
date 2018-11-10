@@ -5,5 +5,5 @@
 <p>{{object.date}}</p>
 <p>{{object.venue}}</p>
 <a href="{{object.link}}"><h4>Click to register</h4></a>
-<a href="{% url 'post_new' %}"><h4>Click here to receive notification</h4></a>
+<a href="notif/{{object.id1}}"><h4>Click here to receive notification</h4></a>
 {% endblock content %}

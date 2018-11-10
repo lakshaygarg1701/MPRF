@@ -48,17 +48,14 @@ class subscribe(FormView):
 	template_name="newsletter.html"
 
 
-	def notif(self):
-		if self.request.method == 'POST': # If the form has been submitted...
-			form = SubscribeForm(self.request.POST or None, user=self.request.user) # A form bound to the POST data
-			print(self.request,user)
+	def post(self,request,*args,**kwargs):
+		print(kwargs['pk'])
+		if request.method == 'POST': # If the form has been submitted...
+			form = SubscribeForm(request.POST or None) # A form bound to the POST data
 			if form.is_valid(): # All validation rules pass
 				form.save()
-				# post.email=request.user
-				# return redirect('list')
 		else:
 			form= SubscribeForm() # An unbound form
-				# EventDetail.objects.create()
 		return render(self.request, 'newsletter.html', {'form': form})
 
 from django_cron import CronJobBase, Schedule

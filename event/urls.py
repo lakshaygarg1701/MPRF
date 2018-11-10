@@ -5,5 +5,5 @@ urlpatterns=[
 	path('',Data.as_view(),name='list'),
 	path("<int:pk>", Details.as_view(), name='detail'),
 	# path("<int:pk>/newsletter/",subscribe.as_view(success_url='/content')),
-	path("newsletter", subscribe.as_view(success_url='/content/'), name='post_new'),
+	path("notif/<int:pk>", subscribe.as_view(), name='post_new'),
 ]
