@@ -43,7 +43,7 @@ class Event(models.Model):
     temail = models.TextField()
     femail = models.TextField()
     body = models.TextField()
-    date = models.DateTimeField()
+    date = models.TextField()
     venue = models.TextField()
     link = models.BinaryField()
     contact = models.TextField()

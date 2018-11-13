@@ -49,13 +49,10 @@ class subscribe(FormView):
 
 
 	def post(self,request,*args,**kwargs):
-		print(kwargs['pk'])
-		if request.method == 'POST': # If the form has been submitted...
-			form = SubscribeForm(request.POST or None) # A form bound to the POST data
-			if form.is_valid(): # All validation rules pass
-				form.save()
-		else:
-			form= SubscribeForm() # An unbound form
+		form = SubscribeForm(request.POST or None) # A form bound to the POST data
+		if form.is_valid(): # All validation rules pass
+			form.save()
+			return redirect('/content')
 		return render(self.request, 'newsletter.html', {'form': form})
 
 from django_cron import CronJobBase, Schedule
