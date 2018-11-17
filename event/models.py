@@ -11,14 +11,16 @@ Event_Date=(
 Category=(
     ('E-Sports', "E-Sports"),
     ('Sports', "Sports"),
-    ('Dance', "Dance"),
-    ('Music', "Music"),
+    ('Technical', "Technical"),
+    ('Cultural', "Cultural"),
+    ('Others', "Others"),
 )
 
 Dept=(
     ('CS','CS'),
     ('BBA','BBA'),
     ('B.Com.','B.Com.'),
+    ('B.Ed.','B.Ed.')
 )
 
 class Post(models.Model):
@@ -38,17 +40,18 @@ class Post(models.Model):
         return self.title
 
 class Event(models.Model):
-    id1 = models.IntegerField(primary_key=True)  # AutoField?
+    id1 = models.IntegerField(primary_key=True)
     name = models.TextField()
-    temail = models.TextField()
-    femail = models.TextField()
+    temail = models.TextField(blank=True, null=True)
+    femail = models.TextField(blank=True, null=True)
     body = models.TextField()
-    date = models.TextField()
+    date = models.DateTimeField()
     venue = models.TextField()
     link = models.BinaryField()
     contact = models.TextField()
-    category=models.CharField(max_length=25,choices=Category)
-    dept=models.CharField(max_length=20,choices=Dept)
+    category = models.TextField(blank=True, null=True)
+    dept = models.TextField(blank=True, null=True)
+    img = models.TextField()
 
     class Meta:
         managed = False

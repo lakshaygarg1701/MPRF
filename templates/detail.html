@@ -1,9 +1,14 @@
 <!-- {% extends "base.html" %} -->
 {% block content %}
+<img src="{{object.img}}"/>
 <h1>{{object.name}}</h1><br>
 <p>{{object.body}}</p>
-<p>{{object.date}}</p>
-<p>{{object.venue}}</p>
-<a href="{{object.link}}"><h4>Click to register</h4></a>
-<a href="notif/{{object.id1}}"><h4>Click here to receive notification</h4></a>
+<p><h4>Date: {{object.date}}</h4></p>
+<p><h4>Venue: {{object.venue}}</h4></p>
+<button><a href="{{object.link}}"><font color=white><h4>Click to register for the event</h4></font></a></button>
+<button><a href="notif/{{object.id1}}"><font color=white><h4>Click here to receive notification</h4></font></a></button>
+<script>
+	document.getElementsByTagName('p')[1].setAttribute('style','white-space:pre-wrap;padding-left:10px')
+	document.getElementsByTagName('button').setAttribute('style','padding-left:10px')
+</script>
 {% endblock content %}

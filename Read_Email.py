@@ -7,13 +7,10 @@ import sqlite3
 from datetime import datetime as dt
 import os
 
-
-conn=sqlite3.connect('../mprf/db.sqlite3')
-crs=conn.cursor()
-insert='insert into test values(null,?,?,?,?,?,?,?,?)'
-
-def read_email_from_gmail(crs):
+def read_email_from_gmail():
     try:
+        conn=sqlite3.connect('../mprf/db.sqlite3')
+        crs=conn.cursor()
         user='garglakshay631@gmail.com'
         password="abcd@1234"
         serverimap = imaplib.IMAP4_SSL('imap.gmail.com')
@@ -23,6 +20,8 @@ def read_email_from_gmail(crs):
         serversmtp.login(user, password)
 
         typ, data = serverimap.search(None, 'UnSeen')
+        print('\n','Start')
+        print(dt.now())
         print("Connection",typ)
         print(data)
         mail_ids = data[0]
@@ -30,6 +29,7 @@ def read_email_from_gmail(crs):
         id_list = mail_ids.split()
         if len(id_list)==0:
             print('Database is up to date')
+            print('\nClose',dt.now())
             return
         first_email = int(id_list[0])
         latest_email = int(id_list[-1])
@@ -37,7 +37,8 @@ def read_email_from_gmail(crs):
             typ, data = serverimap.fetch(str(i), '(RFC822)' )
             for response_part in data:
                 if isinstance(response_part, tuple):
-                    mail = mailparser.parse_from_bytes(response_part[-1])
+                    mail = mailparser.parse_from_string(str(response_part[-1],'utf-8'))
+                    print(mail)
                     name=mail.subject
                     name1=name.split('_')[0]
                     to=mail.to[-1][-1]
@@ -48,7 +49,6 @@ def read_email_from_gmail(crs):
                     contact=b[-1]
                     date=b[-3]
                     date=dt.strptime(date,'%d %B %Y, %I %p')
-                    date=date.strftime('%d/%m/%Y')
                     venue=b[-5]
                     reg=b[-7]
                     dept=b[-9]
@@ -56,7 +56,7 @@ def read_email_from_gmail(crs):
                     if cat=='E-Sport':
                         cat='E-Sports'
                     str1="\r\n".join(b[:-9])
-                    print(date)
+                    filePath=""
                     emailbody=data[0][1]
                     att=email.message_from_bytes(emailbody)
                     for part in att.walk():
@@ -71,14 +71,16 @@ def read_email_from_gmail(crs):
                             if not os.path.isfile(filePath) :
                                 print (fileName)
                                 fp = open(filePath, 'wb')
+                                print(filePath)
                                 fp.write(part.get_payload(decode=True))
                                 fp.close()
-                    crs.execute('insert into event values(null,?,?,?,?,?,?,?,?,?,?)',(name1,from_,to,str1,date,venue,reg,contact,cat,dept))
-#                     serversmtp.sendmail(to,from_,'Thanks')
+                    crs.execute('insert into event values(null,?,?,?,?,?,?,?,?,?,?,?)',(name1,from_,to,str1,date,venue,reg,contact,cat,dept,filePath))
+                    serversmtp.sendmail(to,from_,'Thanks')
+        print('\nClose',dt.now())
         conn.commit()
         conn.close()
 
     except (Exception, e):
         print (str(e))
 
-read_email_from_gmail(crs)
+read_email_from_gmail()
