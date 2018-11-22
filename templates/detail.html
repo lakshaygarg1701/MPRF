@@ -1,14 +1,55 @@
-<!-- {% extends "base.html" %} -->
+{% extends "base.html" %}
 {% block content %}
 <img src="{{object.img}}"/>
-<h1>{{object.name}}</h1><br>
-<p>{{object.body}}</p>
-<p><h4>Date: {{object.date}}</h4></p>
-<p><h4>Venue: {{object.venue}}</h4></p>
-<button><a href="{{object.link}}"><font color=white><h4>Click to register for the event</h4></font></a></button>
-<button><a href="notif/{{object.id1}}"><font color=white><h4>Click here to receive notification</h4></font></a></button>
+<h1 style='padding-left: 10px'>
+	<u>
+		{{object.name}}
+	</u>
+</h1>
+<br>
+<div style="background-color: #DEF4FF;border-style:solid;width: 50%; float: left;">
+	<p>
+		{{object.body}}
+	</p>
+</div>
+<div style="padding-left: 50%">
+	<p>
+		<h4 style='padding-left: 10px'>
+			Date: {{object.date}}
+		</h4>
+	</p>
+	<p>
+		<h4 style='padding-left: 10px'>
+			Venue: {{object.venue}}
+		</h4>
+	</p>
+	<button>
+		<a href="{{object.link}}">
+			<font color=white>
+				<h4>
+					Click to register for the event
+				</h4>
+			</font>
+		</a>
+	</button>
+	<button>
+		<a href="notif/{{object.id1}}">
+			<font color=white>
+				<h4>
+					Click here to receive notification
+				</h4>
+			</font>
+		</a>
+	</button>
+	<p style='padding-left: 10px'>
+		<font size=1.5>
+			Added on {{object.added_on}}
+		</font>
+	</p>
+</div>
 <script>
 	document.getElementsByTagName('p')[1].setAttribute('style','white-space:pre-wrap;padding-left:10px')
-	document.getElementsByTagName('button').setAttribute('style','padding-left:10px')
+	document.getElementsByTagName('button')[1].setAttribute('style','padding: 8px 15px;margin: 0px 10px;')
+	document.getElementsByTagName('button')[2].setAttribute('style','padding: 8px 15px;')
 </script>
 {% endblock content %}

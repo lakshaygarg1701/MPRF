@@ -4,10 +4,6 @@ from django.db import models
 from django.utils import timezone
 from datetime import date
 
-Event_Date=(
-    ("Upcoming",date.today()),
-    ("Past Events",date.today())
-)
 Category=(
     ('E-Sports', "E-Sports"),
     ('Sports', "Sports"),
@@ -52,6 +48,7 @@ class Event(models.Model):
     category = models.TextField(blank=True, null=True)
     dept = models.TextField(blank=True, null=True)
     img = models.TextField()
+    added_on = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -66,7 +63,3 @@ class EventDetail(models.Model):
 
     class Meta:
         db_table = 'event_detail'
-
-    # def save(request):
-    #     publisher.save()
-

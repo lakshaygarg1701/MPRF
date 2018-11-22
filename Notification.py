@@ -10,7 +10,7 @@ from dateutil.parser import parse
 import datetime
 
 list1=[]
-conn1=sqlite3.connect('Desktop/mprf/db.sqlite3')
+conn1=sqlite3.connect('../mprf/db.sqlite3')
 crs1=conn1.cursor()
 today=dt.now().date()
 crs1.execute('select * from event, event_detail where event_detail.id1=event.id1')

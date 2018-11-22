@@ -9,7 +9,7 @@ import os
 
 def read_email_from_gmail():
     try:
-        conn=sqlite3.connect('../mprf/db.sqlite3')
+        conn=sqlite3.connect('Desktop/mprf/db.sqlite3')
         crs=conn.cursor()
         user='garglakshay631@gmail.com'
         password="abcd@1234"
@@ -20,8 +20,8 @@ def read_email_from_gmail():
         serversmtp.login(user, password)
 
         typ, data = serverimap.search(None, 'UnSeen')
-        print('\n','Start')
-        print(dt.now())
+        print('\n')
+        print('Start',dt.now(),'\n')
         print("Connection",typ)
         print(data)
         mail_ids = data[0]
@@ -74,7 +74,7 @@ def read_email_from_gmail():
                                 print(filePath)
                                 fp.write(part.get_payload(decode=True))
                                 fp.close()
-                    crs.execute('insert into event values(null,?,?,?,?,?,?,?,?,?,?,?)',(name1,from_,to,str1,date,venue,reg,contact,cat,dept,filePath))
+                    crs.execute('insert into event values(null,?,?,?,?,?,?,?,?,?,?,?,?)',(name1,from_,to,str1,date,venue,reg,contact,cat,dept,filePath,dt.now().replace(microsecond=0)))
                     serversmtp.sendmail(to,from_,'Thanks')
         print('\nClose',dt.now())
         conn.commit()

@@ -127,9 +127,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/content'
 LOGOUT_REDIRECT_URL='/accounts/login'
-settings_dir = os.path.dirname(__file__)
-print(settings_dir)
-PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
-print(PROJECT_ROOT)
-IMAGES_FOLDER = os.path.join(PROJECT_ROOT, 'posters/')
-print(IMAGES_FOLDER)
