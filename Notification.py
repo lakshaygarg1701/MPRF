@@ -10,14 +10,14 @@ from dateutil.parser import parse
 import datetime
 
 list1=[]
-conn1=sqlite3.connect('../mprf/db.sqlite3')
+conn1=sqlite3.connect('Desktop/mprf/db.sqlite3')
 crs1=conn1.cursor()
 today=dt.now().date()
 crs1.execute('select * from event, event_detail where event_detail.id1=event.id1')
 td=datetime.timedelta(days=1)
 user="garglakshay631@gmail.com"
 password="abcd@1234"
-serversmtp = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+serversmtp = smtplib.SMTP_SSL('smtp.gmail.com')
 serversmtp.login(user, password)
 print('\nStart',dt.now())
 for x in crs1:
