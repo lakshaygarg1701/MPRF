@@ -4445,21 +4445,17 @@ a {
 .sf-menu, .sf-menu
 * {
     margin: 0;
-    padding: 0;
+    padding: 10;
     list-style: none
 }
 
-.sf-menu
-li {
-    position: relative
-}
 
 .sf-menu
 ul {
     position: absolute;
     display: none;
     top: 100%;
-    left: 0;
+    left: 10;
     z-index: 99
 }
 
@@ -4511,11 +4507,11 @@ ul {
 }
 
 .navbar-wpz > li {
-    padding: 0
+    padding: 10
 }
 
 .navbar-wpz > li:first-child {
-    padding-left: 0
+    padding-left: 10
 }
 
 .navbar-wpz > li:last-child {
@@ -4542,7 +4538,7 @@ a {
 
 .navbar-wpz
 ul {
-    text-align: left;
+    text-align: center;
     margin: 0;
     padding: 5px
     0;
@@ -4651,7 +4647,8 @@ ul {
 }
 
 .logo-navbar .navbar-wpz > li > a:hover {
-    color: #a41d31
+    color: #a41d31;
+    font-weight: bold;
 }
 
 .logo-navbar .navbar-wpz > .current-menu-item > a,

@@ -23,13 +23,13 @@ class Data(ListView):
 		dept=self.request.GET.get('department' or None)
 
 		if dept:
-			queryset = Event.objects.filter(dept__iexact=dept)
+			queryset = queryset.filter(dept__iexact=dept)
 
 		if category:
 			if category=='Others':
-				queryset=Event.objects.filter(category__iexact="")
+				queryset=queryset.filter(category__iexact="")
 			else:
-				queryset = Event.objects.filter(category__iexact=category)
+				queryset = queryset.filter(category__iexact=category)
 
 		queryset = queryset.order_by("date")
 		return queryset;

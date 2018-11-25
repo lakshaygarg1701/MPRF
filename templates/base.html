@@ -23,14 +23,14 @@
             </p>
         </div><!-- .navbar-brand -->
         <div id="navbar-logo" class="logo-navbar" style="max-width: 200px;">
-          <div class="menu-nearlogo-container">
-            <ul id="menu-nearlogo" class="navbar-wpz dropdown sf-menu sf-js-enabled sf-arrows">
+          <div>
+            <ul style="list-style: none;">
               <li>{% if user.is_authenticated %}
-              Hi {{ user.username }}!
-              <button type="submit" style="height:100%; width:50%;"><a href="{% url 'logout' %}">logout</a></button>
+              Hi {{ user.first_name }}<br>
+              <button type="submit" style="height:100%; width:40%;"><a href="{% url 'logout' %}"><font color=white>Logout</font></a></button>
               {% else %}
               <p>You are not logged in</p>
-              <button type="submit" style="height:100%; width:50%;"><a href="{% url 'login' %}">login</a></button>
+              <button type="submit" style="height:100%; width:40%;"><a href="{% url 'login' %}"><font color=white>Login</font></a></button>
               {% endif %}
             </ul>
           </div>
