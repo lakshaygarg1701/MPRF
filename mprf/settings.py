@@ -122,3 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/content'
 LOGOUT_REDIRECT_URL='/accounts/login'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+

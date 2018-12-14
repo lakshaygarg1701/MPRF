@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/first.css' %}">
   <meta charset="utf-8">
   <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link rel='shortcut icon' href="{% static 'favicon.ico' %}" type='image/x-icon' />
   <title>{% block title %}Maharaja Surajmal Institute{% endblock %}</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
     <div class="wrapper">
       <div class="brand_wrapper">
         <div style="float:left;margin-right:30px;">
-          <img src="http://msi-ggsip.org/wp-content/uploads/2016/05/Maharaja-Surajmal-1.jpg" style="clear: right;" title="MSI" alt="MSI" height="130" width="130">
+          <img src="{% static ''%}" style="clear: right;" title="MSI" alt="MSI" height="130" width="130">
         </div>
         <div class="navbar-brand-wpz">
           <h1>Maharaja Surajmal Institute</h1>
