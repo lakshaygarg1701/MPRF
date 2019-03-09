@@ -5,8 +5,9 @@ from django.views.generic.edit import FormView
 from .models import Event, EventDetail
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from .forms import SubscribeForm
+from .forms import SubscribeForm,AddEventForm
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class Data(ListView):
@@ -18,7 +19,8 @@ class Data(ListView):
 		return context
 	
 	def get_queryset(self):
-		queryset = Event.objects.all()
+		queryset=Event.objects.all()
+		# queryset = queryset.filter(date__gte=datetime.today)
 		category = self.request.GET.get('category' or None)
 		dept=self.request.GET.get('department' or None)
 
@@ -44,6 +46,19 @@ class Details(DetailView):
 		obj = get_object_or_404(Event,pk=pk)
 		print(context)
 		return context
+
+class Add(FormView):
+	model=Event
+	template_name="add.html"
+	form_class=AddEventForm
+
+	def post(self,request,*args,**kwargs):
+		form = AddEventForm(request.POST or None)
+		form.added_on=datetime.now()
+		if form.is_valid(): # All validation rules pass
+			form.save()
+			return redirect('/content',permanent=True)
+		return render(self.request, 'add.html', {'form': form})
 
 class subscribe(FormView):
 	model=EventDetail

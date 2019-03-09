@@ -43,7 +43,7 @@ class Event(models.Model):
     body = models.TextField()
     date = models.DateTimeField()
     venue = models.TextField()
-    link = models.BinaryField()
+    link = models.TextField()
     contact = models.TextField()
     category = models.TextField(blank=True, null=True)
     dept = models.TextField(blank=True, null=True)

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load qr_code %}
 {% block content %}
 <h1 style='padding-left: 10px'>
 	<u>
@@ -27,6 +28,9 @@
 			Venue: {{object.venue}}
 		</h4>
 	</p>
+	<p>{% qr_from_text object.link size=5 version=12 %}
+	<font size=2>Scan the QR code to register for the event</font><br/></p>
+	<font size=2>Can't scan the QR code?</font>
 	<button>
 		<a href="{{object.link}}">
 			<font color=white>
