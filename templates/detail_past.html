@@ -9,55 +9,51 @@
 <br>
 <div style="background-color: #DEF4FF;border-style:solid;width: 50%; float: left;">
 	<p>
-		{{object.body}}
+		{{object.report}}
 	</p>
 </div>
 <div style="padding-left: 50%">
 	<p>
 		<h4 style='padding-left: 10px'>
-			For more information about this event, contact<br>{{object.contact}}
-		</h4>
-	</p>
-	<p>
-		<h4 style='padding-left: 10px'>
 			Date: {{object.date}}
 		</h4>
 	</p>
-	<p>
-		<h4 style='padding-left: 10px'>
-			Venue: {{object.venue}}
-		</h4>
-	</p>
-	<p>{% qr_from_text object.link size=5 version=12 %}
-	<font size=2>Scan the QR code to register for the event</font><br/></p>
-	<font size=2>Can't scan the QR code?</font>
+	{% if object.email == user.email %}
 	<button>
-		<a href="{{object.link}}">
+		<a href="add/report/{{object.id1}}">
 			<font color=white>
 				<h4>
-					Click to register for the event
+					Click here to add report
 				</h4>
 			</font>
 		</a>
 	</button>
+	{%else%} 
 	<button>
-		<a href="notif/{{object.id1}}">
+		<a href="add/feedback/{{object.id1}}">
 			<font color=white>
 				<h4>
-					Click here to receive notification
+					Click here to add feedback
 				</h4>
 			</font>
 		</a>
 	</button>
+	{%endif%}
 	<p style='padding-left: 10px'>
 		<font size=1.5>
 			Added on {{object.added_on}}
 		</font>
 	</p>
 </div>
+<div style="padding-left: 50%">
+	<ul>
+		{%for x in feedback%}
+		<li>{{x.uname}} said:<br>{{x.feedback}}<hr>
+		{% endfor %}
+	</ul>
+</div>
 <script>
-	document.getElementsByTagName('p')[1].setAttribute('style','white-space:pre-wrap;padding-left:10px')
+	document.getElementsByTagName('p')[0].setAttribute('style','white-space:pre-wrap;padding-left:10px')
 	document.getElementsByTagName('button')[2].setAttribute('style','padding: 8px 15px;margin: 0px 10px;')
-	document.getElementsByTagName('button')[3].setAttribute('style','padding: 8px 15px;')
 </script>
 {% endblock content %}

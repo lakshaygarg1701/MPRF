@@ -38,8 +38,7 @@ class Post(models.Model):
 class Event(models.Model):
     id1 = models.IntegerField(primary_key=True)
     name = models.TextField()
-    temail = models.TextField(blank=True, null=True)
-    femail = models.TextField(blank=True, null=True)
+    email = models.TextField(blank=True, null=True)
     body = models.TextField()
     date = models.DateTimeField()
     venue = models.TextField()
@@ -63,3 +62,32 @@ class EventDetail(models.Model):
 
     class Meta:
         db_table = 'event_detail'
+
+class EventRep(models.Model):
+    id1 = models.IntegerField(primary_key=True)
+    name = models.TextField()
+    email = models.TextField(blank=True, null=True)
+    report = models.TextField()
+    date = models.DateTimeField()
+    contact = models.TextField()
+    category = models.TextField(blank=True, null=True)
+    dept = models.TextField(blank=True, null=True)
+    img = models.TextField(blank=True, null=True)
+    added_on = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'event_rep'
+
+class EventFdbck(models.Model):
+    id1 = models.IntegerField(primary_key=True)
+    name = models.TextField()
+    email = models.TextField(blank=True, null=True)
+    feedback = models.TextField()
+    date = models.DateTimeField()
+    added_on = models.DateTimeField(blank=True, null=True)
+    uname = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'event_fdbck'

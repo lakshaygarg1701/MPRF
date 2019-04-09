@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
 }
 
 
@@ -121,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/content'
+LOGIN_REDIRECT_URL = '/content/upcoming'
 LOGOUT_REDIRECT_URL='/accounts/login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 

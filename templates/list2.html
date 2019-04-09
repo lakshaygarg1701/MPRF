@@ -24,28 +24,12 @@
 <div style='padding-left:10px;'>
 	<table>
 		<tr>
-			<th>Event Id</th>
 			<th>Event Name</th>
-			<th>Date</th>
-			<th>Venue</th>
-			<th>Department</th>
-			<th>Registration link</th>
 		</tr>
 		{%for x in object_list%}
 		<tr>
-			<td>{{x.id1}}</td>
 			<td>
-				<a href="/content/upcoming/{{x.id1}}">{{x.name}}</a>
-			</td>
-			<td>{{x.date}}</td>
-			<td>{{x.venue}}</td>
-			<td>{{x.dept}}</td>
-			<td>
-				<button style='padding: 3px 5px;'>
-					<a href="{{x.link}}" target="_blank">
-						<font color='white'>Click</font>
-					</a>
-				</button>
+				<a href="/content/past/{{x.id1}}">{{x.name}}</a>
 			</td>
 		</tr>
 		{%endfor%}

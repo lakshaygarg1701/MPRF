@@ -1,9 +1,1 @@
-from django.urls import path
-from .views import Data, Details, subscribe, Add
-
-urlpatterns=[
-	path('',Data.as_view(),name='list'),
-	path("<int:pk>", Details.as_view(), name='detail'),
-	path("notif/<int:pk>", subscribe.as_view(success_url='/<int:pk>'), name='post_new'),
-	path("add/form",Add.as_view())
-]
+from django.urls import pathfrom .views import Data, Details, subscribe, Add, Data_past, Details_past, AddRep, AddFdbckurlpatterns=[	path('upcoming',Data.as_view(),name='list'),	path("upcoming/<int:pk>", Details.as_view(), name='detail'),	path("upcoming/notif/<int:pk>", subscribe.as_view(success_url='/<int:pk>'), name='post_new'),	path("past/add/report/<int:pk>",AddRep.as_view(success_url='/content')),	path("past",Data_past.as_view()),	path("past/<int:pk>", Details_past.as_view(), name='detail'),	path("past/add/feedback/<int:pk>", AddFdbck.as_view()),]
