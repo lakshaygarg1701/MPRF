@@ -19,8 +19,7 @@
 		</h4>
 	</p>
 	{% if object.email == user.email %}
-	<button>
-		<a href="add/report/{{object.id1}}">
+	<button style="padding: 8px 15px;margin: 0px 10px;" onclick="location.href='add/report/{{object.id1}}'">
 			<font color=white>
 				<h4>
 					Click here to add report
@@ -29,14 +28,12 @@
 		</a>
 	</button>
 	{%else%} 
-	<button>
-		<a href="add/feedback/{{object.id1}}">
+	<button style="padding: 8px 15px;margin: 0px 10px;" onclick="location.href='add/feedback/{{object.id1}}'">
 			<font color=white>
 				<h4>
 					Click here to add feedback
 				</h4>
 			</font>
-		</a>
 	</button>
 	{%endif%}
 	<p style='padding-left: 10px'>
@@ -54,6 +51,5 @@
 </div>
 <script>
 	document.getElementsByTagName('p')[0].setAttribute('style','white-space:pre-wrap;padding-left:10px')
-	document.getElementsByTagName('button')[2].setAttribute('style','padding: 8px 15px;margin: 0px 10px;')
 </script>
 {% endblock content %}

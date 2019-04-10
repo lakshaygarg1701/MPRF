@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load qr_code %}
 {% block content %}
 <h1 style='padding-left: 10px'>
 	<u>
@@ -28,11 +27,7 @@
 			Venue: {{object.venue}}
 		</h4>
 	</p>
-	<p>{% qr_from_text object.link size=5 version=12 %}
-	<font size=2>Scan the QR code to register for the event</font><br/></p>
-	<font size=2>Can't scan the QR code?</font>
-	<button>
-		<a href="{{object.link}}">
+	<button style='padding: 8px 15px;margin: 0px 10px;' onclick="location.href='{{object.link}}'">
 			<font color=white>
 				<h4>
 					Click to register for the event
@@ -40,8 +35,7 @@
 			</font>
 		</a>
 	</button>
-	<button>
-		<a href="notif/{{object.id1}}">
+	<button style='padding: 8px 15px;margin: 0px 10px;' onclick="location.href='notif/{{object.id1}}'">
 			<font color=white>
 				<h4>
 					Click here to receive notification
@@ -57,7 +51,5 @@
 </div>
 <script>
 	document.getElementsByTagName('p')[1].setAttribute('style','white-space:pre-wrap;padding-left:10px')
-	document.getElementsByTagName('button')[2].setAttribute('style','padding: 8px 15px;margin: 0px 10px;')
-	document.getElementsByTagName('button')[3].setAttribute('style','padding: 8px 15px;')
 </script>
 {% endblock content %}
