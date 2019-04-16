@@ -32,7 +32,7 @@ class Data(ListView):
 				queryset=queryset.filter(category__iexact="")
 			else:
 				queryset = queryset.filter(category__iexact=category)
-		queryset = queryset.filter(date__gte=datetime.today())
+		# queryset = queryset.filter(date__gte=datetime.today())
 		queryset = queryset.order_by("date")
 		render(self.request, 'list1.html')
 		return queryset;
@@ -122,7 +122,7 @@ class AddRep(FormView):
 		return render(self.request, 'add.html', {'form': form})
 
 
-class AddFdbck(UpdateView):
+class AddFdbck(FormView):
 	model=EventFdbck
 	template_name="add.html"
 	form_class=AddFeedback
@@ -132,11 +132,11 @@ class AddFdbck(UpdateView):
 		form = AddFeedback(request.POST or None)
 		form.added_on=datetime.now()
 		change=EventRep.objects.get(id1=kwargs['pk'])
+		form.data['name']=change.name
 		form.data['email']=request.user.email
 		form.data['uname']=request.user.username
 		print(form.data['feedback'])
 		if form.is_valid(): # All validation rules pass
-			# form.data['email']
 			form.save()
 			return redirect('list',permanent=True)
 		return render(self.request, 'add.html', {'form': form})

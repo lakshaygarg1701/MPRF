@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load qr_code %}
 {% block content %}
 <h1 style='padding-left: 10px'>
 	<u>
@@ -7,12 +6,12 @@
 	</u>
 </h1>
 <br>
-<div style="background-color: #DEF4FF;border-style:solid;width: 50%; float: left;">
-	<p>
+<div style="border-style:solid;width: 50%; float: left;">
+	<pre>
 		{{object.report}}
-	</p>
+	</pre>
 </div>
-<div style="padding-left: 50%">
+<div style="padding-left: 50.3%">
 	<p>
 		<h4 style='padding-left: 10px'>
 			Date: {{object.date}}
@@ -36,20 +35,13 @@
 			</font>
 	</button>
 	{%endif%}
-	<p style='padding-left: 10px'>
-		<font size=1.5>
-			Added on {{object.added_on}}
-		</font>
-	</p>
 </div>
-<div style="padding-left: 50%">
+<hr>
+<div style="padding-left: 51%">
 	<ul>
 		{%for x in feedback%}
-		<li>{{x.uname}} said:<br>{{x.feedback}}<hr>
+		<li><b>{{x.uname}}</b> said:<br><i>{{x.feedback}}</i><hr>
 		{% endfor %}
 	</ul>
 </div>
-<script>
-	document.getElementsByTagName('p')[0].setAttribute('style','white-space:pre-wrap;padding-left:10px')
-</script>
 {% endblock content %}
